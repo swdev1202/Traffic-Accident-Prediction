@@ -59,7 +59,10 @@ default train_by_cluster = False
 ```
 
 You can set the `train_by_cluster = True` if you want to train your data regardless of clusters. In other words, the classifier will activate entire hotspots (clusters) if it predicts there will be an accident. The final classifier model will be saved in `models/`  
-If you set `train_by_cluster = False`, you are training cluster by cluster. Every cluster's classifier will be saved in `models/classifier_by_cluster`.
+If you set `train_by_cluster = False`, you are training cluster by cluster. Every cluster's classifier will be saved in `models/classifier_by_cluster`.  
+Pre-trained models for San Jose, CA are available!  
+[EntireClusterModel](https://drive.google.com/file/d/15yX45oQ_FKRs-nabA4Hf742KCVwKd_3g/view?usp=sharing)  
+[PerClusterModel](https://drive.google.com/file/d/1Mh1LYNq9OtTE1t-qeCiRrt8gp3yItKCs/view?usp=sharing)
 
 ## Inference
 Becuase the inference model is more intuitive with Google Map API, I suggest you to obtain Google Map API key [here](https://developers.google.com/maps/documentation/javascript/get-api-key). Also, it requires actual weather information for the location, please register for the weather API on DarkSky API. If you are willing to get the nearest accident hotspot from your location, you can run the following script.
