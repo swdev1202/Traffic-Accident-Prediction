@@ -114,3 +114,15 @@ if __name__ == '__main__':
     print('Cluster Generation Completed!')
     print('Saving positive training samples at', save_path)
     selected_data.to_csv(save_path, index = None, header=True)
+
+    print('Saving Cluster Information...')
+    clt_features = ['Cluster', 'Longitude', 'Latitude']
+    cluster_info = pd.DataFrame(columns=clt_features)
+
+    for i in range(0, len(clust_mean)):
+        clt = pd.DataFrame([[i, clust_mean[i][0], clust_mean[i][1]]], columns=clt_features)
+        cluster_info = cluster_info.append(clt, ignore_index = True)
+
+    cluster_info_name = 'cluster_info.csv'
+    cluster_info.to_csv (os.path.join(datapath, cluster_info_name), index = None, header=True)
+    print('Cluster Information Saved as ', cluster_info_name)

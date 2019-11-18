@@ -49,3 +49,16 @@ Once you complete the negative samples generation, you will have `training.csv` 
 
 ### Training a classifier
 For this project, random forest is used to classify wether given some input conditions, there is an accident or not.
+```
+pthon utils/train_classifier.py --filepath [Your training data path] --train_by_cluster [Whether you want to train by cluster or not]
+
+ex.) python utils/train_classifier.py
+default fileapth = "data/training.csv"
+default train_by_cluster = False
+```
+
+You can set the `train_by_cluster = True` if you want to train your data regardless of clusters. In other words, the classifier will activate entire hotspots (clusters) if it predicts there will be an accident. The final classifier model will be saved in `models/`  
+If you set `train_by_cluster = False`, you are training cluster by cluster. Every cluster's classifier will be saved in `models/classifier_by_cluster`.
+
+## Inference
+Becuase the inference model is more intuitive with Google Map API, I suggest you to obtain Google Map API key [here](https://developers.google.com/maps/documentation/javascript/get-api-key). Also, it requires actual weather information for the location, please register for the weather API on DarkSky API.
