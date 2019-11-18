@@ -1,5 +1,6 @@
 # Traffic-Accident-Prediction
 A real-time traffic accident predictor
+![WeekDay](/docs/weekday_change.gif)
 
 ## Data Extraction
 Please refer to [`/data`](data/) to download and place them.  
