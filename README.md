@@ -32,3 +32,20 @@ default cluster_samples = 20
 Please note that cluster distance is in terms of latitude degree. 0.001 degree in latitude is about 100 meters in metrics.  
 
 ### Negative Sample Generation
+Until this step, we only have positive samples (accidents). However, in order to train a classifier model, we need to have negative samples (no accidents) to distinguish accidents. Therefore, our script will generate 3x more negative samples per cluster. For instance, if a cluster has 200 accidents, 600 random negative samples will be generated.  
+In order for an accurate negative sample generation, weather API (DarkSky API) is used. The date and hour will be randomly selected that spans in between the period of the positive samples. Then, it will also check whether my randomly generated date is not colliding with a positive sample's date and hour.
+In order to use weather API, please sign up and get an API key from [DarkSkyAPI](https://darksky.net/dev). Please note that DarkSky API allows only 1000 free API calls per day. For San Jose, CA, about 34,000 API calls are needed to generate total negative samples. Please consult the pricing from DarkSky API before generating negative samples. You can access to San Jose, CA training set [here](https://drive.google.com/file/d/15v3SL2thC_H_iMjCXnaYohKewoztFyfU/view?usp=sharing).  
+Since API calls are not that fast, it may take few hours to complete generating negative samples
+
+```
+python utils/negative_samples.py --filepath [Your Positive Sample Data Path] --apipath [Your Weather API text file]
+
+ex.) python utils/negative_samples.py
+default filepath = "data/PositiveTrainingData.csv"
+default apipath = "api/darksky_api.txt"
+```
+
+Once you complete the negative samples generation, you will have `training.csv` in `data/` directory.
+
+### Training a classifier
+For this project, random forest is used to classify wether given some input conditions, there is an accident or not.
