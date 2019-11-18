@@ -61,4 +61,17 @@ You can set the `train_by_cluster = True` if you want to train your data regardl
 If you set `train_by_cluster = False`, you are training cluster by cluster. Every cluster's classifier will be saved in `models/classifier_by_cluster`.
 
 ## Inference
-Becuase the inference model is more intuitive with Google Map API, I suggest you to obtain Google Map API key [here](https://developers.google.com/maps/documentation/javascript/get-api-key). Also, it requires actual weather information for the location, please register for the weather API on DarkSky API.
+Becuase the inference model is more intuitive with Google Map API, I suggest you to obtain Google Map API key [here](https://developers.google.com/maps/documentation/javascript/get-api-key). Also, it requires actual weather information for the location, please register for the weather API on DarkSky API. If you are willing to get the nearest accident hotspot from your location, you can run the following script.
+
+```
+python inference.py --single_mode [Whether you are predicting in a single mode] --lat [your location latitude] --lng [your location longitude]
+
+ex.) python inference.py --single_mode False --lat 37.23 --lng -121.74
+default single_mode = True
+default latitude = 37.336431
+default longitude = 121.883980
+```
+I highly recommend using Jupyer notebook for this application since it is more intuitive watching steps with Google Map API.
+
+## Summary
+This project was completed for CMPE 255 (Data Mining) class in Fall 2019 at San Jose State University.
